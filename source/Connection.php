@@ -60,12 +60,12 @@ class Connection extends ConnectionAbstract
     }
 
     /**
-     * Get connection encoding
+     * Get encoding
      *
      * @return string
      */
 
-    public function getConnectionEncoding()
+    public function getEncoding()
     {
         return pg_client_encoding($this->getConnection());
     }
@@ -87,7 +87,7 @@ class Connection extends ConnectionAbstract
             throw new Exception('Unable to connect: ' . var_export($this->_connection_string, true));
 
         if ($this->_connection_encoding && pg_set_client_encoding($this->_connection, $this->_connection_encoding) !== 0)
-            throw new Exception('Unable to set encoding ' . var_export($this->_connection_encoding, true));
+            throw new Exception('Unable to set encoding: ' . var_export($this->_connection_encoding, true));
 
         return $this->_connection;
     }
