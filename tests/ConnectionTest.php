@@ -30,7 +30,21 @@ class ConnectionTest extends \PHPUnit\Framework\TestCase
     public function testNotConnected()
     {
         $this->assertFalse(
-            $this->getObject('test')->isConnected()
+            $this->getObject('dummy')->isConnected()
+        );
+    }
+
+    /**
+     * Test get connection string
+     */
+
+    public function testGetConnectionString()
+    {
+        $connection_string = 'test_connection_string';
+
+        $this->assertEquals(
+            $connection_string,
+            $this->getObject($connection_string)->getConnectionString()
         );
     }
 }
