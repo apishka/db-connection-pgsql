@@ -47,4 +47,17 @@ class ConnectionTest extends \PHPUnit\Framework\TestCase
             $this->getObject($connection_string)->getConnectionString()
         );
     }
+
+    /**
+     * Test unable to connect
+     *
+     * @expectedException Apishka\DbConnection\PgSql\Exception
+     * @expectedExceptionMessageRegExp /^Unable to connect/
+     */
+
+    public function testUnableToConnect()
+    {
+        $connection = $this->getObject('dummy');
+        $connection->getConnection();
+    }
 }
