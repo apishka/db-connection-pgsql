@@ -11,6 +11,12 @@ use Apishka\DbConnection\PgSql\Connection;
 class ConnectionTest extends \PHPUnit\Framework\TestCase
 {
     /**
+     * Traits
+     */
+
+    use \PHPUnit\DbUnit\TestCaseTrait;
+
+    /**
      * Get object
      *
      * @param ... $connection_string
