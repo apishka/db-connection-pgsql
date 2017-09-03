@@ -24,6 +24,17 @@ class ConnectionTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Get connection string
+     *
+     * @return string
+     */
+
+    protected function getConnectionString()
+    {
+        return 'host=127.0.0.1 user=postgres';
+    }
+
+    /**
      * Test not connected
      */
 
@@ -70,7 +81,7 @@ class ConnectionTest extends \PHPUnit\Framework\TestCase
 
     public function testUnableToSetEncoding()
     {
-        $connection = $this->getObject('host=127.0.0.1 user=postgres', 'dummy');
+        $connection = $this->getObject($this->getConnectionString(), 'dummy');
         $connection->getConnection();
     }
 
@@ -80,7 +91,7 @@ class ConnectionTest extends \PHPUnit\Framework\TestCase
 
     public function testGetEncoding()
     {
-        $connection = $this->getObject('host=127.0.0.1 user=postgres', 'UTF-8');
+        $connection = $this->getObject($this->getConnectionString(), 'UTF-8');
 
         $this->assertEquals(
             'UTF8',
