@@ -39,11 +39,13 @@ class Connection extends ConnectionAbstract
      * Construct
      *
      * @param string $connection_string
+     * @param string $connection_encoding
      */
 
-    public function __construct($connection_string)
+    public function __construct($connection_string, $connection_encoding = null)
     {
         $this->_connection_string = $connection_string;
+        $this->_connection_encoding = $connection_encoding;
     }
 
     /**
@@ -55,6 +57,17 @@ class Connection extends ConnectionAbstract
     public function getConnectionString()
     {
         return $this->_connection_string;
+    }
+
+    /**
+     * Get connection encoding
+     *
+     * @return string
+     */
+
+    public function getConnectionEncoding()
+    {
+        return pg_client_encoding($this->getConnection());
     }
 
     /**
